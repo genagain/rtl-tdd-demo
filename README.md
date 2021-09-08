@@ -103,3 +103,153 @@ Now your test should pass again as shown below.
 [screenshot 3]
 
 To see what your code should look like, please checkout the branch `phase-01` in this repository.
+
+## Test-Driven Development in Action (Phase 2)
+
+### Configuring Client-side Routing
+
+While Create React App does at lot to set up the React application, it doesn't include client-side routing. To install React Router, please run the following.
+```
+yarn add react-router-dom
+```
+
+Then, please add the BrowserRouter component to `src/index.js` like so.
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from "react-router-dom"
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+
+To define an index route in `src/App.js`, delete everything in the file and replace it with the following.
+```
+import { Switch, Route } from 'react-router-dom'
+
+function App() {
+  return (
+    <>
+      <Switch>
+        <Route path="/" exact component={() => <h1>Index</h1>} />
+      </Switch>
+    </>
+  );
+}
+
+export default App;
+```
+
+To delete the `src/App.test.js` file, please run the following command.
+
+```
+rm src/App.test.js
+```
+
+To create a directory for pages, please run the following command.
+```
+mkdir pages
+```
+
+To create a directory for tests, please run the following command.
+```
+mkdir pages/__tests__
+```
+
+To set up the Index page, create a file called `src/pages/Index.js` with the following contents
+```
+function Index() {
+  return (
+    <div>
+      <div>Index</div>
+    </div>
+  )
+}
+
+export default Index;
+```
+
+To write our first test, create a file called `src/pages/__tests__/Index.test.js` with the following contents
+```
+import { render, screen } from "@testing-library/react"
+
+import Index from "../Index"
+
+describe("The Index component", () => {
+  beforeEach(() => {
+    render(<Index />)
+  })
+
+  describe("renders", () => {
+    test("the header", () => {
+      const header = screen.getByRole('heading', { name: /index/i })
+      expect(header).toBeInTheDocument()
+    })
+  })
+})
+```
+
+When you run the tests, it should fail. To make this test pass, please use a header tag that contains the text Index in `src/App.js`
+
+To set us up for the next phase, please change `src/pages/__tests__/Index.test.js` to be the following.
+```
+import { render, screen } from "@testing-library/react"
+import { BrowserRouter } from "react-router-dom"
+
+import Index from "../Index"
+
+describe("The Index component", () => {
+  beforeEach(() => {
+    render(<BrowserRouter><Index /></BrowserRouter>)
+  })
+
+  describe("renders", () => {
+    test("the header", () => {
+      const header = screen.getByRole('heading', { name: /index/i })
+      expect(header).toBeInTheDocument()
+    })
+
+    test("the signup link", () => {
+      const link = screen.getByRole('link', { name: /sign up/i })
+      expect(link).toBeInTheDocument()
+    })
+  })
+})
+```
+
+To make this test pass, please use the `Link` component from React Router to link to the `/sign-up` route.
+
+Finally, let's use our Index component in `src/App.js` be ensuring it has the following contents.
+```
+import { Switch, Route } from 'react-router-dom'
+
+import Index from './pages/Index'
+
+function App() {
+  return (
+    <>
+      <Switch>
+        <Route path="/" exact component={Index} />
+      </Switch>
+    </>
+  );
+}
+
+export default App;
+```
+
+To see what your code should look like, please checkout the branch `phase-02` in this repository.
