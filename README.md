@@ -44,5 +44,7 @@ React Testing Library is a solution for testing React components. The tests work
 React Testing Library provides a number queries to find elements in the DOM. [Here](https://testing-library.com/docs/react-testing-library/cheatsheet/#queries) is a comprehensive resources that discusses all of them. Today we will be using three queries that we will discuss.
 
 `getByLabelText` - Searches the DOM for an element that has a given label associated with it. For example, if we want to find the username input field, we can use this query with the username label.
+
 `getByText` - Searches the DOM for an element that contains the given text. For example if we wanted to find some text in some paragraph tags, we can use this query with the text we want to find.
+
 `getByRole` - Searches the DOM for an element that is a given ARIA role. For example if we wanted to find a link, we can use this query to with the link's text we want to find.
