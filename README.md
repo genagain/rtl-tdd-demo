@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Test-Driven Development with React Testing Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This tutorial assumes you know the basics of git, React, and React Router
 
-## Available Scripts
+## Why do we test?
 
-In the project directory, you can run:
+Before we get in to how to do test-driven development in React, let's discuss why we write tests in the first place.
 
-### `yarn start`
+### Ensure our code works as expected
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Given an input (or set of inputs) we want to ensure that we get the expected output after executing our code. If we get an output that we don't expect, the test(s) will fail which tells us something isn't working correctly. By writing tests, we can be confident that the code works for all of cases it needs to.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Make refactoring easier
 
-### `yarn test`
+Software engineers often refactor their code. Without tests, it is difficult to know if the refactored code accounts for all of the cases it needs to. With tests, you can be confident that the refactored code accounts for all of the cases it needs to. If any tests fails, we can know what part of the code isn't working correctly and address the issue.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Enable seamless collaboration
 
-### `yarn build`
+Software engineers often collaborate in order to build software. This means that often you're looking at someone elses code. If there are tests, we know how the code is expected to behave, so you can refactor or extend the code's functionality with ease.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## What makes a good test?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+We want to be sure the tests we write are good. Otherwise, a the test can give us a falsely indicate that the code is working as expected when it isn't. There are a number of characteristics to consider when writing good tests. Let's discuss three of them.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Independent
 
-### `yarn eject`
+Each test should not depend on any of the other tests. This is because testing tools often randomize the order in which tests are run. If a test fails we want to be sure that it is indicating something is breaking rather than the test being run out of order.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Idempotent
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Test suites, which are a collections of tests, are run often. We want to be sure that we get the same result each time, regardless of how many times we run it. If a test failes we want to be sure it's indicating something is breaking rather than being run one too many times.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Atomic
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The software we build often has lots of features. Instead of having unnecessarily complicated tests, we can write tests that test the smallest amount of functionality at a time. This way we can maximize the number of scenarios we are account for while writing the fewest tests.
 
-## Learn More
+## What is React Testing Library
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+React Testing Library is a solution for testing React components. The tests work with actual DOM nodes, so it provides utilities to query the DOM in the same way the user would. Let's discuss some of these queries.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### Queries
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+React Testing Library provides a number queries to find elements in the DOM. [Here](https://testing-library.com/docs/react-testing-library/cheatsheet/#queries) is a comprehensive resources that discusses all of them. Today we will be using three queries that we will discuss.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`getByLabelText` - Searches the DOM for an element that has a given label associated with it. For example, if we want to find the username input field, we can use this query with the username label.
+`getByText` - Searches the DOM for an element that contains the given text. For example if we wanted to find some text in some paragraph tags, we can use this query with the text we want to find.
+`getByRole` - Searches the DOM for an element that is a given ARIA role. For example if we wanted to find a link, we can use this query to with the link's text we want to find.
