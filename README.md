@@ -22,14 +22,14 @@ Software engineers often collaborate in order to build software. This means that
 
 We want to be sure the tests we write are good. Otherwise, a the test can give us a falsely indicate that the code is working as expected when it isn't. There are a number of characteristics to consider when writing good tests. Let's discuss three of them.
 
-####Independent
+#### Independent
 
 Each test should not depend on any of the other tests. This is because testing tools often randomize the order in which tests are run. If a test fails we want to be sure that it is indicating something is breaking rather than the test being run out of order.
 
-####Idempotent
+#### Idempotent
 
 Test suites, which are a collections of tests, are run often. We want to be sure that we get the same result each time, regardless of how many times we run it. If a test failes we want to be sure it's indicating something is breaking rather than being run one too many times.
 
-####Atomic
+#### Atomic
 
 The software we build often has lots of features. Instead of having unnecessarily complicated tests, we can write tests that test the smallest amount of functionality at a time. This way we can maximize the number of scenarios we are account for while writing the fewest tests.
