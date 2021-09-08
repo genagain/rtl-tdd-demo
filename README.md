@@ -34,6 +34,10 @@ Test suites, which are a collections of tests, are run often. We want to be sure
 
 The software we build often has lots of features. Instead of having unnecessarily complicated tests, we can write tests that test the smallest amount of functionality at a time. This way we can maximize the number of scenarios we are account for while writing the fewest tests.
 
+## What is Test-Driven Development?
+
+Test-driven development, TDD for short, when you write a test before you implement the code that passes the test to develop your software application.
+
 ## What is React Testing Library
 
 React Testing Library is a solution for testing React components. The tests work with actual DOM nodes, so it provides utilities to query the DOM in the same way the user would. Let's discuss some of these queries.
@@ -48,3 +52,54 @@ React Testing Library provides a number queries to find elements in the DOM. [He
 `getByText` - Searches the DOM for an element that contains the given text. For example if we wanted to find some text in some paragraph tags, we can use this query with the text we want to find.
 
 `getByRole` - Searches the DOM for an element that is a given ARIA role. For example if we wanted to find a link, we can use this query to with the link's text we want to find.
+
+## Test-Driven Development in Action (Phase 1)
+
+### Using Create React App
+
+To create a React application in the folder `rtl-tdd`, please run the following command.
+```
+npx create-react-app rtl-tdd
+```
+
+To navigate to the `rtl-tdd` directory, please run the following command.
+```
+cd rtl-tdd
+```
+
+To run the development server, please run the following command.
+```
+yarn start
+```
+
+Then when you go to http://localhost:3000 in your browser you should see the following.
+[screenshot 1]
+
+Fortunately, everything we need to run React Testing Library comes installed, so we don't need to do any configuration. There is even a test that is already written for us. To execute all of the tests, please run the following command.
+```
+yarn test
+```
+
+### Improving the Existing Test
+
+Please open the file `src/App.test.js` in a text editor.
+
+The test expects that there is the text "Learn React" in the App component. When you look at the component in your browser, notice how the text that says "Learn React" is a link. This test should be more precise, so let's use the getByRole query to get that DOM element. Please replace line 6 in `src/App.test.js` with the following.
+```
+const linkElement = screen.getByRole('link', /learn react/i);
+```
+
+When the test suite runs, it should pass the test again.
+
+Because we want to be sure this test fails when the text "Learn React" is present but is not a link. To do this please change the anchor tag in `src/App.js` to be a paragraph tag. Once you do this, you should see your test fail as shown below.
+[screenshot 2]
+
+Now that we know our test is good, please revert the `src/App.js` file by running the following command.
+```
+git checkout src/App.js
+```
+
+Now your test should pass again as shown below.
+[screenshot 3]
+
+To see what your code should look like, please checkout the branch `phase-01` in this repository.
