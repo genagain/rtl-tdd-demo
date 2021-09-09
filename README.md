@@ -92,7 +92,8 @@ const linkElement = screen.getByRole('link', /learn react/i);
 When the test suite runs, it should pass the test again.
 
 Because we want to be sure this test fails when the text "Learn React" is present but is not a link. To do this please change the anchor tag in `src/App.js` to be a paragraph tag. Once you do this, you should see your test fail as shown below.
-[screenshot 2]
+![Test Error](https://user-images.githubusercontent.com/7481098/132736843-396c95f9-7a92-44d1-9c07-e895fbd7b18d.png)
+
 
 Now that we know our test is good, please revert the `src/App.js` file by running the following command.
 ```
@@ -100,7 +101,8 @@ git checkout src/App.js
 ```
 
 Now your test should pass again as shown below.
-[screenshot 3]
+![Test Pass)](https://user-images.githubusercontent.com/7481098/132736928-814214f1-15db-446a-bbb3-f96414717597.png)
+
 
 To see what your code should look like, please checkout the branch `phase-01` in this repository.
 
