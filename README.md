@@ -73,7 +73,7 @@ yarn start
 ```
 
 Then when you go to http://localhost:3000 in your browser you should see the following.
-[screenshot 1]
+![CRA Screen](https://imgur.com/a/f1L5Fxu)
 
 Fortunately, everything we need to run React Testing Library comes installed, so we don't need to do any configuration. There is even a test that is already written for us. To execute all of the tests, please run the following command.
 ```
