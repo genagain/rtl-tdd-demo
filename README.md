@@ -160,6 +160,8 @@ To delete the `src/App.test.js` file, please run the following command.
 rm src/App.test.js
 ```
 
+### Creating an Index page
+
 To create a directory for pages, please run the following command.
 ```
 mkdir pages
@@ -253,3 +255,20 @@ export default App;
 ```
 
 To see what your code should look like, please checkout the branch `phase-02` in this repository.
+
+## Test-Driven Development in Action (Phase 3)
+
+### Creating a Sign up Page
+
+Using the TDD methodology, create a sign up page with the following. 
+* A header that says "Sign Up"
+* A form with the following
+  - A username input field
+  - An email input field
+  - A password input field
+  - A password confirmation input field
+  - A sign up button
+
+Be sure to use labels for the input fields. When writing your tests, be sure to use getByRole and getByLabelText
+
+To see what your code should look like, please checkout the branch `phase-03` in this repository.
