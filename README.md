@@ -73,8 +73,7 @@ yarn start
 ```
 
 Then when you go to http://localhost:3000 in your browser you should see the following.
-![CRA Screen](<img width="1440" alt="Screen Shot 2021-09-07 at 1 52 02 PM" src="https://user-images.githubusercontent.com/7481098/132736538-e52b5c3b-f1db-4295-8a31-135a33c92e67.png">
-)
+![CRA Screen](https://user-images.githubusercontent.com/7481098/132736538-e52b5c3b-f1db-4295-8a31-135a33c92e67.png)
 
 Fortunately, everything we need to run React Testing Library comes installed, so we don't need to do any configuration. There is even a test that is already written for us. To execute all of the tests, please run the following command.
 ```
