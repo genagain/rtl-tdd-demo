@@ -269,6 +269,6 @@ Using the TDD methodology, create a sign up page with the following.
   - A password confirmation input field
   - A sign up button
 
-Be sure to use labels for the input fields. When writing your tests, be sure to use getByRole and getByLabelText
+Be sure to use labels for the input fields. When writing your tests, be sure to use the queries `getByRole` and `getByLabelText`
 
 To see what your code should look like, please checkout the branch `phase-03` in this repository.
