@@ -36,7 +36,7 @@ The software we build often has lots of features. Instead of having unnecessaril
 
 ## What is Test-Driven Development?
 
-Test-driven development, TDD for short, when you write a test before you implement the code that passes the test to develop your software application.
+Test-driven development, TDD for short, is when you write a test before you implement the code that passes the test to develop your software application.
 
 ## What is React Testing Library
 
